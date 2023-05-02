@@ -48,10 +48,84 @@ class _SettingsState extends State<Settings> {
             ],
           ),
 
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.88,
-              width: MediaQuery.of(context).size.width,
+          ///0.88
+
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.01,
+            width: MediaQuery.of(context).size.width,
+          ),
+
+          Container(
+            height: MediaQuery.of(context).size.height * 0.001,
+            width: MediaQuery.of(context).size.width * 0.9,
+            color: Colors.black87,
+          ),
+
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.008,
+            width: MediaQuery.of(context).size.width,
+          ),
+
+          SizedBox(
+              height: MediaQuery.of(context).size.height * 0.02,
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+              SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.02,
+                  child: const FittedBox(
+                    child: Text(
+                      "Bluetooth",
+                      style: TextStyle(
+                          color: Colors.black87,
+                      ),
+                    ),
+                  )),
+                ],
+              ),
             ),
+
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.41,
+            width: MediaQuery.of(context).size.width,
+          ),
+
+          Container(
+            height: MediaQuery.of(context).size.height * 0.001,
+            width: MediaQuery.of(context).size.width * 0.9,
+            color: Colors.black87,
+          ),
+
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.008,
+            width: MediaQuery.of(context).size.width,
+          ),
+
+          SizedBox(
+              height: MediaQuery.of(context).size.height * 0.02,
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+              SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.02,
+                  child: const FittedBox(
+                    child: Text(
+                      "Alerts",
+                      style: TextStyle(
+                          color: Colors.black87,
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+            ),
+
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.402,
+              width: MediaQuery.of(context).size.width,
+            )
 
         ],
       ),

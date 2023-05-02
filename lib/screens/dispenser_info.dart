@@ -21,16 +21,18 @@ class _DispenserInfoState extends State<DispenserInfo> with SingleTickerProvider
   late double _startingPos;
   var _drawerVisible = false;
   late AnimationController _animationController;
-  Size _screen = Size(0, 0);
+   Size _screen = Size(0, 0);
   late CurvedAnimation _animator;
   late CurvedAnimation _objAnimator;
+  int _framecounter = 0;
+  bool _updateLocked = false;
 
   @override
   void initState() {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 400),
     );
     _animator = CurvedAnimation(
       parent: _animationController,
@@ -54,41 +56,52 @@ class _DispenserInfoState extends State<DispenserInfo> with SingleTickerProvider
 
   void _onDragStart(DragStartDetails details) {
     _startingPos = details.globalPosition.dx;
+    _updateLocked = false;
   }
 
   void _onDragUpdate(DragUpdateDetails details) {
     final globalDelta = details.globalPosition.dx - _startingPos;
-    if (globalDelta > 0) {
-      final pos = globalDelta / _screen.width;
-      if (_drawerVisible && pos <= 1.0) return;
-      _animationController.value = pos;
-    } else {
-      final pos = 1 - (globalDelta.abs() / _screen.width);
-      if (!_drawerVisible && pos >= 0.0) return;
-      _animationController.value = pos;
-    }
+    //moves to right
+    if (_updateLocked == false) {
+      if (globalDelta > 0) {
+        _animationController.value = 1.0;
+        final pos = globalDelta / _screen.width;
+        if (pos <= 1.0) return;
+        _animationController.value = pos;
+      } 
+      //moves to left
+      else {
+        _animationController.value = 0.0;
+        final pos = 1 - (globalDelta.abs() / _screen.width);
+        if (pos >= 0.0) return;
+        _animationController.value = pos;
+      }
+      _updateLocked = true;
+    } else {}
   }
 
   void _onDragEnd(DragEndDetails details) {
-    if (details.velocity.pixelsPerSecond.dx.abs() > 500) {
-      if (details.velocity.pixelsPerSecond.dx < 0) {
-        _animationController.forward(from: _animationController.value);
-        _drawerVisible = true;
-      } else {
-        _animationController.reverse(from: _animationController.value);
-        _drawerVisible = false;
-      }
-      return;
-    }
-    if (_animationController.value < 0.5) {
+    if (details.velocity.pixelsPerSecond.dx < 0) {
       {
         _animationController.forward(from: _animationController.value);
         _drawerVisible = true;
+        if (_framecounter == 3) {
+          _framecounter = 0;
+        } else {
+          _framecounter += 1;
+        }
+        setState(() {});
       }
     } else {
       {
         _animationController.reverse(from: _animationController.value);
         _drawerVisible = false;
+        if (_framecounter == 0) {
+          _framecounter = 3;
+        } else {
+          _framecounter -= 1;
+        }
+        setState(() {});
       }
     }
   }
@@ -127,7 +140,7 @@ class _DispenserInfoState extends State<DispenserInfo> with SingleTickerProvider
           ),
 
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.536,
+              height: MediaQuery.of(context).size.height * 0.528,
               width: MediaQuery.of(context).size.width,
               child: GestureDetector(
                 onHorizontalDragStart: _onDragStart,
@@ -141,12 +154,17 @@ class _DispenserInfoState extends State<DispenserInfo> with SingleTickerProvider
                     1,
                     4,
                     "png",
-                    250,
-                    fps: 60,
+                    248,
+                    fps: 62,
                     isLooping: false,
                     isBoomerang: true,
                     isAutoPlay: false,
-                    frame: (_objAnimator.value * 62).ceil(),
+                    // frame: (
+                    //   _framecounter == 0 ?
+                    //   1
+                    //   : _framecounter * 62
+                    //   ).ceil(),
+                    frame: ((_animationController.value + _framecounter) * 62).ceil(),
                   ),
                 ),
               ),
@@ -159,7 +177,7 @@ class _DispenserInfoState extends State<DispenserInfo> with SingleTickerProvider
             ),
 
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.325,
+              height: MediaQuery.of(context).size.height * 0.333,
               width: MediaQuery.of(context).size.width,
             ),
 

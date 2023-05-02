@@ -15,6 +15,8 @@ library version_1.globals;
 //Lists
 List<String> favourites = ['Salami', 'Käse'];
 
+List<String> dispenserIngredients = ['Salami', 'Brot', 'Ketchup', 'Tomaten'];
+
 //Maps
 
 
