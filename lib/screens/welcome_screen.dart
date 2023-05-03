@@ -16,6 +16,8 @@ import 'package:version_1/screens/create_sandwich.dart';
 //The Benefit of this is, that the App adjusts to different Screensizes automatically.
 //======================================================================
 
+
+///STartScreen is the anchor for the UI of the Start screen. All other functions are impelmented in here that have to do with the Welcome Screen
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
 
@@ -62,6 +64,7 @@ class _StartScreenState extends State<StartScreen>{
               width: MediaQuery.of(context).size.width * 0.5,
               child: FittedBox(
                 child: ElevatedButton(
+                  ///if the button is pressed, the screen will change to the New-Sandwich-Interface
                   onPressed: (){
                     Navigator.push(
                         context,
@@ -135,7 +138,7 @@ class _StartScreenState extends State<StartScreen>{
 }
 
 
-///Widget that builds the Graphics for favourite Sandwiches
+///Widget that builds the Graphics for favourite Sandwiches, that were already created
 class FavouriteSandwiches extends StatelessWidget {
   const FavouriteSandwiches({super.key, required this.index_});
 

@@ -39,6 +39,9 @@ dependencies:
   #The following adds Vector math to the project
   vector_math: ^2.1.4
 
+  #The following adds Nuberpicker to the project. This library is needed for the user to pick a time where the sandwich should be ready
+  numberpicker: ^2.1.2
+
   #The following is needed to create the dispenser rotation animation
   image_sequence_animator:
     git:

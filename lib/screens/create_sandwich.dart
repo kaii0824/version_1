@@ -1,5 +1,6 @@
 ///Import flutter libraries:
 import 'package:flutter/material.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 ///Import other files:
 import 'package:version_1/globals.dart';
@@ -17,6 +18,80 @@ class CreateSandwich extends StatefulWidget {
 }
 
 class _CreateSandwichState extends State<CreateSandwich> {
+
+  ///function that opens a small window where the user can input the time that should pass, until the sandwich is made
+  setTime() {
+    showDialog(
+      context: context, 
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: StatefulBuilder(
+            builder: (context, SBsetState) {
+              return Column(
+                 mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Prepare in:",
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: MediaQuery.of(context).size.height * 0.04,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Row(
+                      children: [
+                        ///Hours
+                        NumberPicker(
+                          minValue: 00,
+                          maxValue: 23,
+                          value: 0,
+                          onChanged: (value) {
+                            setState(() {});
+                            SBsetState(
+                              () {},
+                            );
+                          }),
+
+                        ///Minutes
+                        NumberPicker(
+                          minValue: 00,
+                          maxValue: 60,
+                          value: 0,
+                          onChanged: (value) {
+                            setState(() {});
+                            SBsetState(
+                              () {},
+                            );
+                          }),
+                      ]
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Text('Hours / Week'),
+                        const Spacer(),
+                        ElevatedButton(
+                          onPressed: () {}, 
+                          child: const Text('save')
+                        )
+                      ],
+                    )
+                  ]
+              );
+            },
+          ),
+        );
+      }
+    );
+  }
+
+
+
+  ///function that builds the main structure:
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,20 +176,23 @@ class _CreateSandwichState extends State<CreateSandwich> {
                 padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.001),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'Prepare for:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black87,
                       ),
                     ),
-                    Spacer(),
-                    Text(
-                      '19:30',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: (){setTime();},
+                      child: const Text(
+                        '19:30',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
                       ),
                     )
                   ],
