@@ -26,6 +26,7 @@ class _CreateSandwichState extends State<CreateSandwich> {
       builder: (BuildContext context) {
         return AlertDialog(
           content: StatefulBuilder(
+            // ignore: non_constant_identifier_names
             builder: (context, SBsetState) {
               return Column(
                  mainAxisSize: MainAxisSize.min,
@@ -158,7 +159,7 @@ class _CreateSandwichState extends State<CreateSandwich> {
               width: MediaQuery.of(context).size.width,
               child: DragTarget<String>(
                 builder: (BuildContext context, List<dynamic> accepted,List<dynamic> rejected) {
-                  return const Placeholder();
+                  return const SizedBox();
                 }
               ),
             ),
@@ -178,7 +179,7 @@ class _CreateSandwichState extends State<CreateSandwich> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Text(
-                      'Prepare for:',
+                      'Prepare in:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black87,
@@ -188,7 +189,7 @@ class _CreateSandwichState extends State<CreateSandwich> {
                     ElevatedButton(
                       onPressed: (){setTime();},
                       child: const Text(
-                        '19:30',
+                        '19h:30min',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
@@ -288,7 +289,7 @@ class DispenserIngredientsUI extends StatelessWidget {
 
       feedback: Container(
           margin: const EdgeInsets.only(left: 10, right: 10),
-          height: MediaQuery.of(context).size.height * 0.1,
+          height: MediaQuery.of(context).size.height * 0.05,
           width: MediaQuery.of(context).size.width * 0.18,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -308,7 +309,7 @@ class DispenserIngredientsUI extends StatelessWidget {
 
       childWhenDragging: Container(
           margin: const EdgeInsets.only(left: 10, right: 10),
-          height: MediaQuery.of(context).size.height * 0.1,
+          height: MediaQuery.of(context).size.height * 0.05,
           width: MediaQuery.of(context).size.width * 0.18,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -328,7 +329,7 @@ class DispenserIngredientsUI extends StatelessWidget {
 
       child: Container(
           margin: const EdgeInsets.only(left: 10, right: 10),
-          height: MediaQuery.of(context).size.height * 0.1,
+          height: MediaQuery.of(context).size.height * 0.05,
           width: MediaQuery.of(context).size.width * 0.18,
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(15)),

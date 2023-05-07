@@ -1,3 +1,6 @@
+// @dart=2.9
+
+
 // Flutter Libraries that are imported in this file are listed here:
 import 'package:flutter/material.dart';
 
@@ -15,7 +18,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  // ignore: use_key_in_widget_constructors
+  const MyApp({key});
 
   // This widget is the root of your application.
   @override

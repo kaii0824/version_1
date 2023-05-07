@@ -48,6 +48,9 @@ dependencies:
       url: 'https://github.com/papmodern/flutter-image-sequence-animator.git'
       path: 'image_sequence_animator'
 
+  #dispenser rotation second try
+  imageview360: ^1.3.0
+
 
 dev_dependencies:
   flutter_test:
