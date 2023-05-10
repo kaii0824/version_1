@@ -1,18 +1,15 @@
-//Import the flutter libraries:
 import 'package:flutter/material.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 
-//Import other files:
-import 'package:version_1/screens/settings.dart';
-import 'package:version_1/screens/dispenser_info.dart';
-import 'package:version_1/screens/welcome_screen.dart';
-
-//=================================================================
-//Anchor is the anchor for the three front pages
-//This function is responsible that one can swipe through the three screens and navigate to all the other screens of the app
-//=================================================================
+import 'dispenser_info.dart';
+import 'settings.dart';
+import 'welcome_screen.dart';
+import 'bluetooth_connect_page.dart';
 
 class Anchor extends StatefulWidget {
-  const Anchor({super.key});
+  final FlutterBlue flutterBlue;
+
+  const Anchor({required this.flutterBlue, Key? key}) : super(key: key);
 
   @override
   State<Anchor> createState() => _AnchorState();
@@ -25,10 +22,14 @@ class _AnchorState extends State<Anchor> {
   Widget build(BuildContext context) {
     return PageView(
       controller: _controller,
-      children: const [
+      children: [
+        // ignore: prefer_const_constructors
         DispenserInfo(),
+        // ignore: prefer_const_constructors
         StartScreen(),
-        Settings(), 
+        // ignore: prefer_const_constructors
+        Settings(),
+        BluetoothConnectPage(flutterBlue: widget.flutterBlue),
       ],
     );
   }

@@ -50,6 +50,7 @@ dependencies:
 
   #dispenser rotation second try
   imageview360: ^1.3.0
+  flutter_blue: ^0.8.0
 
 
 dev_dependencies:

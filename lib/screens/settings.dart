@@ -1,5 +1,7 @@
 //Import Flutter libraries:
 import 'package:flutter/material.dart';
+//Import Flutter Blue libraries;
+//import 'package:flutter_blue/flutter_blue.dart';
 
 //========================================================================
 //This file contains the function that builds the "Settings"-Screen
@@ -22,13 +24,12 @@ class _SettingsState extends State<Settings> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
           SizedBox(
-              height: MediaQuery.of(context).size.height * 0.07,
-              width: MediaQuery.of(context).size.width,
-            ),
+            height: MediaQuery.of(context).size.height * 0.07,
+            width: MediaQuery.of(context).size.width,
+          ),
 
-            Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
@@ -40,8 +41,8 @@ class _SettingsState extends State<Settings> {
                     child: Text(
                       "Settings",
                       style: TextStyle(
-                          color: Colors.black87,
-                          fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   )),
@@ -67,24 +68,24 @@ class _SettingsState extends State<Settings> {
           ),
 
           SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
-              width: MediaQuery.of(context).size.width * 0.9,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-              SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                  child: const FittedBox(
-                    child: Text(
-                      "Bluetooth",
-                      style: TextStyle(
+            height: MediaQuery.of(context).size.height * 0.02,
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                    child: const FittedBox(
+                      child: Text(
+                        "Bluetooth",
+                        style: TextStyle(
                           color: Colors.black87,
+                        ),
                       ),
-                    ),
-                  )),
-                ],
-              ),
+                    )),
+              ],
             ),
+          ),
 
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.41,
@@ -103,30 +104,29 @@ class _SettingsState extends State<Settings> {
           ),
 
           SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
-              width: MediaQuery.of(context).size.width * 0.9,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-              SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                  child: const FittedBox(
-                    child: Text(
-                      "Alerts",
-                      style: TextStyle(
+            height: MediaQuery.of(context).size.height * 0.02,
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                    child: const FittedBox(
+                      child: Text(
+                        "Alerts",
+                        style: TextStyle(
                           color: Colors.black87,
+                        ),
                       ),
-                    ),
-                  )),
-                ],
-              ),
+                    )),
+              ],
             ),
+          ),
 
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.402,
-              width: MediaQuery.of(context).size.width,
-            )
-
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.402,
+            width: MediaQuery.of(context).size.width,
+          )
         ],
       ),
     );
